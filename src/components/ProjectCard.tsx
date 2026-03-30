@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
 interface ProjectCardProps {
+  id: number;
   title: string;
   description: string;
   team: string[];

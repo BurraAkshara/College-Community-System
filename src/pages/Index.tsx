@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Calendar, FileText, FolderKanban, Award, TrendingUp, Activity } from "lucide-react";
+import { Users, Calendar, FileText, FolderKanban, Award, TrendingUp, Activity, Trophy, Medal } from "lucide-react";
 import heroCampus from "@/assets/hero-campus.jpg";
 import StatCard from "@/components/StatCard";
 import ClubCard from "@/components/ClubCard";
@@ -7,6 +7,15 @@ import EventCard from "@/components/EventCard";
 import MemberCard from "@/components/MemberCard";
 import { clubs, events, members, stats } from "@/data/mockData";
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const leaderboard = [...members].sort((a, b) => b.contributions - a.contributions);
+
+const rankStyles = [
+  "bg-accent/20 border-accent/40 text-accent",
+  "bg-muted border-border text-muted-foreground",
+  "bg-warning/15 border-warning/30 text-warning",
+];
 
 const Dashboard = () => {
   const activeMembers = members.filter((m) => m.active);
@@ -73,20 +82,58 @@ const Dashboard = () => {
         </section>
       </div>
 
-      {/* Active Members */}
-      <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-xl font-semibold text-foreground flex items-center gap-2">
-            <Activity className="h-5 w-5 text-success" /> Active Members
-          </h2>
-          <Link to="/members" className="text-sm text-primary hover:underline">View all</Link>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {activeMembers.slice(0, 4).map((member, i) => (
-            <MemberCard key={member.id} {...member} index={i} />
-          ))}
-        </div>
-      </section>
+      {/* Leaderboard & Active Members */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Leaderboard */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2">
+              <Trophy className="h-5 w-5 text-accent" /> Leaderboard
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            {leaderboard.map((m, i) => (
+              <motion.div
+                key={m.id}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.06 }}
+                className={`flex items-center gap-3 p-3 rounded-lg border ${i < 3 ? rankStyles[i] : "bg-muted/30 border-border"}`}
+              >
+                <div className="flex items-center justify-center h-8 w-8 rounded-full font-bold text-sm shrink-0">
+                  {i === 0 ? <Trophy className="h-5 w-5 text-accent" /> : i === 1 ? <Medal className="h-5 w-5 text-muted-foreground" /> : i === 2 ? <Medal className="h-5 w-5 text-warning" /> : <span className="text-muted-foreground">#{i + 1}</span>}
+                </div>
+                <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground shrink-0">
+                  {m.avatar}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-foreground truncate">{m.name}</p>
+                  <p className="text-xs text-muted-foreground">{m.role} · {m.club}</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="text-sm font-bold text-foreground">{m.contributions}</p>
+                  <p className="text-xs text-muted-foreground">points</p>
+                </div>
+              </motion.div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Active Members */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-display text-xl font-semibold text-foreground flex items-center gap-2">
+              <Activity className="h-5 w-5 text-success" /> Active Members
+            </h2>
+            <Link to="/members" className="text-sm text-primary hover:underline">View all</Link>
+          </div>
+          <div className="grid gap-3">
+            {activeMembers.slice(0, 4).map((member, i) => (
+              <MemberCard key={member.id} {...member} index={i} />
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

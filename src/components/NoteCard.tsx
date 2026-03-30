@@ -14,7 +14,8 @@ interface NoteCardProps {
   index: number;
 }
 
-const NoteCard = ({ title, subject, author, date, downloads, pages, rating, index }: NoteCardProps) => (
+const NoteCard = ({ id, title, subject, author, date, downloads, pages, rating, index }: NoteCardProps) => (
+  <Link to={`/notes/${id}`}>
   <motion.div
     initial={{ opacity: 0, y: 15 }}
     animate={{ opacity: 1, y: 0 }}

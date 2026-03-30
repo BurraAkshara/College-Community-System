@@ -21,7 +21,8 @@ const statusColors: Record<string, string> = {
   "Planning": "bg-warning/10 text-warning border-warning/20",
 };
 
-const ProjectCard = ({ title, description, team, status, tech, club, progress, index }: ProjectCardProps) => (
+const ProjectCard = ({ id, title, description, team, status, tech, club, progress, index }: ProjectCardProps) => (
+  <Link to={`/projects/${id}`}>
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}

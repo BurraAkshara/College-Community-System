@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Download, FileText, Star } from "lucide-react";
 
 interface NoteCardProps {
+  id: number;
   title: string;
   subject: string;
   author: string;
@@ -12,7 +14,8 @@ interface NoteCardProps {
   index: number;
 }
 
-const NoteCard = ({ title, subject, author, date, downloads, pages, rating, index }: NoteCardProps) => (
+const NoteCard = ({ id, title, subject, author, date, downloads, pages, rating, index }: NoteCardProps) => (
+  <Link to={`/notes/${id}`}>
   <motion.div
     initial={{ opacity: 0, y: 15 }}
     animate={{ opacity: 1, y: 0 }}
@@ -41,6 +44,7 @@ const NoteCard = ({ title, subject, author, date, downloads, pages, rating, inde
     </div>
     <p className="text-xs text-muted-foreground mt-1">{date}</p>
   </motion.div>
+  </Link>
 );
 
 export default NoteCard;

@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
 interface ProjectCardProps {
+  id: number;
   title: string;
   description: string;
   team: string[];
@@ -19,7 +21,8 @@ const statusColors: Record<string, string> = {
   "Planning": "bg-warning/10 text-warning border-warning/20",
 };
 
-const ProjectCard = ({ title, description, team, status, tech, club, progress, index }: ProjectCardProps) => (
+const ProjectCard = ({ id, title, description, team, status, tech, club, progress, index }: ProjectCardProps) => (
+  <Link to={`/projects/${id}`}>
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -52,6 +55,7 @@ const ProjectCard = ({ title, description, team, status, tech, club, progress, i
       <span>{team.length} team members</span>
     </div>
   </motion.div>
+  </Link>
 );
 
 export default ProjectCard;

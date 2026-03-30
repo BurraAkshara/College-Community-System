@@ -13,6 +13,8 @@ import EventDetail from "./pages/EventDetail";
 import MembersPage from "./pages/Members";
 import NotesPage from "./pages/Notes";
 import ProjectsPage from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+import NoteDetail from "./pages/NoteDetail";
 import AuthPage from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 

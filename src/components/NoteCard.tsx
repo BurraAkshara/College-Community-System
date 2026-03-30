@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Download, FileText, Star } from "lucide-react";
 
 interface NoteCardProps {
+  id: number;
   title: string;
   subject: string;
   author: string;

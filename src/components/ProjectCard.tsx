@@ -55,6 +55,7 @@ const ProjectCard = ({ id, title, description, team, status, tech, club, progres
       <span>{team.length} team members</span>
     </div>
   </motion.div>
+  </Link>
 );
 
 export default ProjectCard;

@@ -44,6 +44,7 @@ const NoteCard = ({ id, title, subject, author, date, downloads, pages, rating, 
     </div>
     <p className="text-xs text-muted-foreground mt-1">{date}</p>
   </motion.div>
+  </Link>
 );
 
 export default NoteCard;

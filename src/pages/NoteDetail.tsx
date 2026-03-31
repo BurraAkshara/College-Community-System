@@ -88,8 +88,11 @@ const NoteDetail = () => {
                     <div className="rounded-full bg-muted h-7 w-7 flex items-center justify-center text-xs font-bold text-foreground">{i + 1}</div>
                     {i < chapters.length - 1 && <div className="w-0.5 flex-1 bg-border mt-1" />}
                   </div>
-                  <div className="pt-1">
+                  <div className="pt-1 flex-1 flex items-center justify-between">
                     <p className="text-sm font-medium text-foreground">{ch}</p>
+                    <Button size="sm" variant="outline" className="h-7 text-xs gap-1" onClick={() => toast.success(`Downloading "${ch}"`, { description: `${note.title} · Chapter ${i + 1}` })}>
+                      <Download className="h-3 w-3" /> Download
+                    </Button>
                   </div>
                 </div>
               ))}

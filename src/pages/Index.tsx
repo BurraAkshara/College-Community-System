@@ -32,7 +32,7 @@ const Dashboard = () => {
         <div className="absolute inset-0 gradient-dark opacity-70" />
         <div className="relative z-10 flex flex-col justify-end h-full p-8">
           <h1 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-2">
-            Welcome to <span className="text-gradient-primary">CampusHub</span>
+            Welcome to <span className="text-gradient-primary">College Community System</span>
           </h1>
           <p className="text-primary-foreground/80 max-w-lg">
             Your college community — clubs, events, notes, projects, and more. All in one place.

@@ -16,7 +16,7 @@ export default function AppLayout() {
         <div className="flex-1 flex flex-col min-w-0">
           <header className="h-14 flex items-center border-b border-border px-4 bg-card/50 backdrop-blur-sm sticky top-0 z-10">
             <SidebarTrigger className="mr-3" />
-            <h2 className="font-display font-semibold text-foreground text-sm">CampusHub</h2>
+            <h2 className="font-display font-semibold text-foreground text-sm">College Community System</h2>
             <div className="ml-auto">
               {user ? (
                 <Button variant="ghost" size="sm" onClick={signOut}>

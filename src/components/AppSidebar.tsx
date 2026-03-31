@@ -36,7 +36,7 @@ export function AppSidebar() {
           </div>
           {!collapsed && (
             <span className="font-display font-bold text-base text-sidebar-foreground">
-              CampusHub
+              College Community System
             </span>
           )}
         </div>
